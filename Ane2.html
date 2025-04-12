@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aneesa Z Nagarchi | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#1e88e5", secondary: "#00bcd4" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Roboto', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #f8fafc;
+      }
+      .wave-text {
+      animation: wave 3s ease-in-out infinite;
+      }
+      @keyframes wave {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      }
+      .ripple {
+      position: relative;
+      overflow: hidden;
+      }
+      .ripple:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      transform: scale(10, 10);
+      opacity: 0;
+      transition: transform .5s, opacity 1s;
+      }
+      .ripple:active:after {
+      transform: scale(0, 0);
+      opacity: .3;
+      transition: 0s;
+      }
+      .floating {
+      animation: floating 3s ease-in-out infinite;
+      }
+      @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      }
+      .rotate-card {
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      }
+      .card-container:hover .rotate-card {
+      transform: rotateY(180deg);
+      }
+      .card-front, .card-back {
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      }
+      .card-back {
+      transform: rotateY(180deg);
+      }
+      .treasure {
+      transition: transform 0.3s;
+      }
+      .treasure:hover {
+      transform: scale(1.05);
+      }
+      .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: bubble-rise 15s infinite ease-in;
+      }
+      @keyframes bubble-rise {
+      0% {
+      transform: translateY(100%) scale(0.3);
+      opacity: 0;
+      }
+      20% {
+      opacity: 0.8;
+      }
+      100% {
+      transform: translateY(-100vh) scale(1);
+      opacity: 0;
+      }
+      }
+      .custom-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      }
+      .custom-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      }
+      .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+      }
+      .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+      }
+      input:checked + .slider {
+      background-color: #1e88e5;
+      }
+      input:checked + .slider:before {
+      transform: translateX(26px);
+      }
+      .timeline-item::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #1e88e5;
+      left: -8px;
+      top: 0;
+      }
+      .hero-bg {
+      background: linear-gradient(135deg, rgba(0,188,212,0.8) 0%, rgba(30,136,229,0.8) 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 bg-white bg-opacity-90 backdrop-blur-sm shadow-md"
+    >
+      <div
+        class="container mx-auto px-6 py-3 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-['Pacifico'] text-primary">Aneesa Z</a>
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#about"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Projects</a
+          >
+          <a
+            href="#experience"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Experience</a
+          >
+          <a
+            href="#certifications"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Certifications</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Contact</a
+          >
+        </div>
+        <div class="md:hidden flex items-center">
+          <button
+            id="menu-toggle"
+            class="w-10 h-10 flex items-center justify-center text-gray-700"
+          >
+            <i class="ri-menu-line ri-lg"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white py-4 px-6 shadow-inner"
+      >
+        <div class="flex flex-col space-y-4">
+          <a
+            href="#about"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Projects</a
+          >
+          <a
+            href="#experience"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Experience</a
+          >
+          <a
+            href="#certifications"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Certifications</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-700 hover:text-primary transition-colors"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section
+      id="about"
+      class="min-h-screen pt-20 flex items-center relative overflow-hidden hero-bg"
+      style="background-image: url('https://public.readdy.ai/ai/img_res/303af6d22d76158c7a8aec1779685b5b.jpg');"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-primary/60 to-secondary/30"
+      ></div>
+      <!-- Bubbles -->
+      <div
+        id="bubbles-container"
+        class="absolute inset-0 overflow-hidden pointer-events-none"
+      ></div>
+      <div class="container mx-auto px-6 z-10 w-full">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 text-white">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 wave-text">
+              Aneesa Z Nagarchi
+            </h1>
+            <h2 class="text-xl md:text-2xl mb-6 typewriter">
+              Computer Science Engineering Student
+            </h2>
+            <p class="text-lg mb-8 max-w-lg">
+              Passionate about Cyber Security, AI, and IoT. Transforming complex
+              problems into elegant solutions through code and innovation.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#contact"
+                class="bg-white text-primary px-6 py-3 rounded-button shadow-lg hover:shadow-xl transition-all ripple whitespace-nowrap"
+                >Get in Touch</a
+              >
+              <a
+                href="#projects"
+                class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-button hover:bg-white/10 transition-all ripple whitespace-nowrap"
+                >View Projects</a
+              >
+            </div>
+          </div>
+          <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center">
+            <div class="relative w-64 h-64 md:w-80 md:h-80 floating">
+              <img
+                src="https://static.readdy.ai/image/f40c0c57909575d84c3eb685a3825db3/2e316c67653957d68079a321f3e01fe1.jpeg"
+                alt="Aneesa Z Nagarchi"
+                class="rounded-full shadow-2xl border-4 border-white"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800"
+        >
+          Technical Expertise
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Programming Languages Island -->
+          <div
+            class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow-lg p-6 transform hover:-translate-y-2 transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-code-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-center mb-4 text-gray-800">
+              Programming
+            </h3>
+            <div class="flex flex-wrap justify-center gap-2">
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Python</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Java</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >C++</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >JavaScript</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >R</span
+              >
+            </div>
+          </div>
+          <!-- Web Technologies Island -->
+          <div
+            class="bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-lg shadow-lg p-6 transform hover:-translate-y-2 transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-global-line ri-2x text-secondary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-center mb-4 text-gray-800">
+              Web Technologies
+            </h3>
+            <div class="flex flex-wrap justify-center gap-2">
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >HTML5</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >CSS3</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >React</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Node.js</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Flask</span
+              >
+            </div>
+          </div>
+          <!-- Database Systems Island -->
+          <div
+            class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-lg shadow-lg p-6 transform hover:-translate-y-2 transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-teal-500/10 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-database-2-line ri-2x text-teal-500"></i>
+            </div>
+            <h3 class="text-xl font-bold text-center mb-4 text-gray-800">
+              Databases
+            </h3>
+            <div class="flex flex-wrap justify-center gap-2">
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >MySQL</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >MongoDB</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >PostgreSQL</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Firebase</span
+              >
+            </div>
+          </div>
+          <!-- Cybersecurity Tools Island -->
+          <div
+            class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg shadow-lg p-6 transform hover:-translate-y-2 transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-indigo-500/10 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-shield-keyhole-line ri-2x text-indigo-500"></i>
+            </div>
+            <h3 class="text-xl font-bold text-center mb-4 text-gray-800">
+              Cybersecurity
+            </h3>
+            <div class="flex flex-wrap justify-center gap-2">
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Wireshark</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Metasploit</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Nmap</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Burp Suite</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Kali Linux</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- AI & Machine Learning -->
+          <div
+            class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg shadow-lg p-6 transform hover:-translate-y-2 transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-purple-500/10 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-brain-line ri-2x text-purple-500"></i>
+            </div>
+            <h3 class="text-xl font-bold text-center mb-4 text-gray-800">
+              AI & Machine Learning
+            </h3>
+            <div class="flex flex-wrap justify-center gap-2">
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >TensorFlow</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >PyTorch</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Scikit-learn</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Computer Vision</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >NLP</span
+              >
+            </div>
+          </div>
+          <!-- IoT & Hardware -->
+          <div
+            class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg shadow-lg p-6 transform hover:-translate-y-2 transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-device-line ri-2x text-green-500"></i>
+            </div>
+            <h3 class="text-xl font-bold text-center mb-4 text-gray-800">
+              IoT & Hardware
+            </h3>
+            <div class="flex flex-wrap justify-center gap-2">
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Arduino</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Raspberry Pi</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >MQTT</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Sensors</span
+              >
+              <span
+                class="bg-white px-3 py-1 rounded-full text-sm text-gray-700 shadow"
+                >Embedded Systems</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gradient-to-b from-blue-50 to-white">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800"
+        >
+          Featured Projects
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- Home Security IoT System -->
+          <div class="card-container h-96 perspective">
+            <div class="rotate-card h-full w-full relative">
+              <div
+                class="card-front bg-white rounded-lg shadow-xl overflow-hidden h-full"
+              >
+                <div class="h-1/2 bg-blue-100 flex items-center justify-center">
+                  <img
+                    src="https://public.readdy.ai/ai/img_res/5ea64764736a08b3a9acfc5216ac8f7d.jpg"
+                    alt="Home Security IoT System"
+                    class="object-contain h-full w-full"
+                  />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold mb-2 text-gray-800">
+                    Home Security IoT System
+                  </h3>
+                  <p class="text-gray-600 mb-4">
+                    A comprehensive smart home security solution using IoT
+                    devices, sensors, and real-time monitoring.
+                  </p>
+                  <div class="flex space-x-2">
+                    <span
+                      class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                      >IoT</span
+                    >
+                    <span
+                      class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                      >Raspberry Pi</span
+                    >
+                    <span
+                      class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                      >Python</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="card-back bg-gradient-to-br from-primary to-secondary rounded-lg p-6 text-white flex flex-col justify-between h-full"
+              >
+                <div>
+                  <h3 class="text-xl font-bold mb-4">
+                    Home Security IoT System
+                  </h3>
+                  <p class="mb-4">
+                    An integrated security system that combines motion sensors,
+                    cameras, and smart locks to provide comprehensive home
+                    protection.
+                  </p>
+                  <ul class="list-disc pl-5 mb-4 space-y-1">
+                    <li>Real-time monitoring via mobile app</li>
+                    <li>AI-powered motion detection algorithms</li>
+                    <li>Encrypted communication protocols</li>
+                    <li>Cloud storage for security footage</li>
+                    <li>Voice command integration</li>
+                  </ul>
+                </div>
+                <div class="flex space-x-3">
+                  <a
+                    href="#"
+                    class="bg-white text-primary px-4 py-2 rounded-button shadow hover:shadow-lg transition-all whitespace-nowrap"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="#"
+                    class="bg-transparent border border-white text-white px-4 py-2 rounded-button hover:bg-white/10 transition-all whitespace-nowrap"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- F2TRANS Face Forgery Detection -->
+          <div class="card-container h-96 perspective">
+            <div class="rotate-card h-full w-full relative">
+              <div
+                class="card-front bg-white rounded-lg shadow-xl overflow-hidden h-full"
+              >
+                <div
+                  class="h-1/2 bg-indigo-100 flex items-center justify-center"
+                >
+                  <img
+                    src="https://public.readdy.ai/ai/img_res/876bec957ee589541759f56059b07dd1.jpg"
+                    alt="F2TRANS Face Forgery Detection"
+                    class="object-contain h-full w-full"
+                  />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold mb-2 text-gray-800">
+                    F2TRANS Face Forgery Detection
+                  </h3>
+                  <p class="text-gray-600 mb-4">
+                    Advanced deepfake detection system using transformer-based
+                    neural networks to identify manipulated facial imagery.
+                  </p>
+                  <div class="flex space-x-2">
+                    <span
+                      class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded"
+                      >AI</span
+                    >
+                    <span
+                      class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded"
+                      >Computer Vision</span
+                    >
+                    <span
+                      class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded"
+                      >PyTorch</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="card-back bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg p-6 text-white flex flex-col justify-between h-full"
+              >
+                <div>
+                  <h3 class="text-xl font-bold mb-4">
+                    F2TRANS Face Forgery Detection
+                  </h3>
+                  <p class="mb-4">
+                    A state-of-the-art system that uses transformer architecture
+                    to detect manipulated facial images with high accuracy.
+                  </p>
+                  <ul class="list-disc pl-5 mb-4 space-y-1">
+                    <li>99.2% accuracy on benchmark datasets</li>
+                    <li>Transformer-based neural network architecture</li>
+                    <li>Real-time detection capabilities</li>
+                    <li>Cross-dataset generalization</li>
+                    <li>Explainable AI components</li>
+                  </ul>
+                </div>
+                <div class="flex space-x-3">
+                  <a
+                    href="#"
+                    class="bg-white text-indigo-600 px-4 py-2 rounded-button shadow hover:shadow-lg transition-all whitespace-nowrap"
+                    >Research Paper</a
+                  >
+                  <a
+                    href="#"
+                    class="bg-transparent border border-white text-white px-4 py-2 rounded-button hover:bg-white/10 transition-all whitespace-nowrap"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Secure Cloud Storage -->
+          <div class="card-container h-96 perspective">
+            <div class="rotate-card h-full w-full relative">
+              <div
+                class="card-front bg-white rounded-lg shadow-xl overflow-hidden h-full"
+              >
+                <div class="h-1/2 bg-teal-100 flex items-center justify-center">
+                  <img
+                    src="https://public.readdy.ai/ai/img_res/e94cde45b8c436ea239460f54f85e252.jpg"
+                    alt="Secure Cloud Storage"
+                    class="object-contain h-full w-full"
+                  />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold mb-2 text-gray-800">
+                    Secure Cloud Storage
+                  </h3>
+                  <p class="text-gray-600 mb-4">
+                    End-to-end encrypted cloud storage solution with
+                    zero-knowledge architecture for maximum privacy.
+                  </p>
+                  <div class="flex space-x-2">
+                    <span
+                      class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded"
+                      >Cryptography</span
+                    >
+                    <span
+                      class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded"
+                      >Cloud</span
+                    >
+                    <span
+                      class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded"
+                      >JavaScript</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="card-back bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg p-6 text-white flex flex-col justify-between h-full"
+              >
+                <div>
+                  <h3 class="text-xl font-bold mb-4">Secure Cloud Storage</h3>
+                  <p class="mb-4">
+                    A zero-knowledge cloud storage platform that ensures only
+                    you can access your files through client-side encryption.
+                  </p>
+                  <ul class="list-disc pl-5 mb-4 space-y-1">
+                    <li>AES-256 encryption for all files</li>
+                    <li>Zero-knowledge architecture</li>
+                    <li>Encrypted file sharing capabilities</li>
+                    <li>Multi-factor authentication</li>
+                    <li>Open-source codebase</li>
+                  </ul>
+                </div>
+                <div class="flex space-x-3">
+                  <a
+                    href="#"
+                    class="bg-white text-teal-600 px-4 py-2 rounded-button shadow hover:shadow-lg transition-all whitespace-nowrap"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="#"
+                    class="bg-transparent border border-white text-white px-4 py-2 rounded-button hover:bg-white/10 transition-all whitespace-nowrap"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Network Intrusion Detection -->
+          <div class="card-container h-96 perspective">
+            <div class="rotate-card h-full w-full relative">
+              <div
+                class="card-front bg-white rounded-lg shadow-xl overflow-hidden h-full"
+              >
+                <div class="h-1/2 bg-red-100 flex items-center justify-center">
+                  <img
+                    src="https://public.readdy.ai/ai/img_res/9b13da228bf99fd99c027391541bf402.jpg"
+                    alt="Network Intrusion Detection"
+                    class="object-contain h-full w-full"
+                  />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold mb-2 text-gray-800">
+                    Network Intrusion Detection
+                  </h3>
+                  <p class="text-gray-600 mb-4">
+                    ML-powered system that identifies and responds to network
+                    security threats in real-time.
+                  </p>
+                  <div class="flex space-x-2">
+                    <span
+                      class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded"
+                      >Cybersecurity</span
+                    >
+                    <span
+                      class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded"
+                      >Machine Learning</span
+                    >
+                    <span
+                      class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded"
+                      >Python</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="card-back bg-gradient-to-br from-red-500 to-orange-600 rounded-lg p-6 text-white flex flex-col justify-between h-full"
+              >
+                <div>
+                  <h3 class="text-xl font-bold mb-4">
+                    Network Intrusion Detection
+                  </h3>
+                  <p class="mb-4">
+                    An intelligent system that monitors network traffic to
+                    detect and respond to potential security threats.
+                  </p>
+                  <ul class="list-disc pl-5 mb-4 space-y-1">
+                    <li>Anomaly-based detection algorithms</li>
+                    <li>Real-time traffic analysis</li>
+                    <li>Automated threat response</li>
+                    <li>Comprehensive logging and reporting</li>
+                    <li>Low false positive rate</li>
+                  </ul>
+                </div>
+                <div class="flex space-x-3">
+                  <a
+                    href="#"
+                    class="bg-white text-red-600 px-4 py-2 rounded-button shadow hover:shadow-lg transition-all whitespace-nowrap"
+                    >Case Study</a
+                  >
+                  <a
+                    href="#"
+                    class="bg-transparent border border-white text-white px-4 py-2 rounded-button hover:bg-white/10 transition-all whitespace-nowrap"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800"
+        >
+          Education & Experience
+        </h2>
+        <div class="relative max-w-3xl mx-auto">
+          <!-- Timeline Line -->
+          <div class="absolute left-0 top-0 h-full w-0.5 bg-primary/20"></div>
+          <!-- Education Item 1 -->
+          <div class="relative pl-8 pb-12 timeline-item">
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-primary"
+            >
+              <span
+                class="inline-block bg-primary text-white text-sm px-3 py-1 rounded-full mb-3"
+                >2022 - Present</span
+              >
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                B.Tech in Computer Science Engineering
+              </h3>
+              <h4 class="text-lg text-primary mb-3">
+                Vellore Institute of Technology
+              </h4>
+              <p class="text-gray-600">
+                Specializing in Cyber Security with a focus on AI applications
+                in security systems. Current GPA: 3.9/4.0
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Advanced Algorithms</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Network Security</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >AI & ML</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Experience Item 1 -->
+          <div class="relative pl-8 pb-12 timeline-item">
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-secondary"
+            >
+              <span
+                class="inline-block bg-secondary text-white text-sm px-3 py-1 rounded-full mb-3"
+                >Summer 2024</span
+              >
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                Cybersecurity Research Intern
+              </h3>
+              <h4 class="text-lg text-secondary mb-3">TechSecure Solutions</h4>
+              <p class="text-gray-600">
+                Conducted research on advanced threat detection algorithms and
+                contributed to the development of a new intrusion detection
+                system.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span
+                  class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded"
+                  >Threat Analysis</span
+                >
+                <span
+                  class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded"
+                  >ML Models</span
+                >
+                <span
+                  class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded"
+                  >Research</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Experience Item 2 -->
+          <div class="relative pl-8 pb-12 timeline-item">
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-indigo-500"
+            >
+              <span
+                class="inline-block bg-indigo-500 text-white text-sm px-3 py-1 rounded-full mb-3"
+                >2023 - 2024</span
+              >
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                Student Researcher
+              </h3>
+              <h4 class="text-lg text-indigo-500 mb-3">University AI Lab</h4>
+              <p class="text-gray-600">
+                Worked on the F2TRANS project, developing and testing
+                transformer-based models for deepfake detection in facial
+                imagery.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span
+                  class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded"
+                  >Computer Vision</span
+                >
+                <span
+                  class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded"
+                  >Deep Learning</span
+                >
+                <span
+                  class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded"
+                  >PyTorch</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Experience Item 3 -->
+          <div class="relative pl-8 timeline-item">
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-purple-500"
+            >
+              <span
+                class="inline-block bg-purple-500 text-white text-sm px-3 py-1 rounded-full mb-3"
+                >2022 - Present</span
+              >
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                Technical Lead
+              </h3>
+              <h4 class="text-lg text-purple-500 mb-3">
+                University Cybersecurity Club
+              </h4>
+              <p class="text-gray-600">
+                Leading a team of 15 students in various cybersecurity projects
+                and competitions. Organized workshops and training sessions on
+                ethical hacking and security best practices.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span
+                  class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded"
+                  >Leadership</span
+                >
+                <span
+                  class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded"
+                  >CTF Competitions</span
+                >
+                <span
+                  class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded"
+                  >Mentoring</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Certifications Section -->
+    <section
+      id="certifications"
+      class="py-20 bg-gradient-to-b from-blue-50 to-white"
+    >
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800"
+        >
+          Certifications & Achievements
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Certification 1 -->
+          <div class="treasure bg-white rounded-lg shadow-lg overflow-hidden">
+            <div
+              class="h-24 bg-gradient-to-r from-primary to-secondary flex items-center justify-center"
+            >
+              <i class="ri-shield-check-line ri-3x text-white"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                Certified Ethical Hacker (CEH)
+              </h3>
+              <p class="text-gray-600 mb-4">EC-Council</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">April 2024</span>
+                <button
+                  class="text-primary hover:text-primary/80 transition-colors"
+                >
+                  <i class="ri-external-link-line ri-lg"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Certification 2 -->
+          <div class="treasure bg-white rounded-lg shadow-lg overflow-hidden">
+            <div
+              class="h-24 bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center"
+            >
+              <i class="ri-ai-generate-line ri-3x text-white"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                Deep Learning Specialization
+              </h3>
+              <p class="text-gray-600 mb-4">Coursera - DeepLearning.AI</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">December 2023</span>
+                <button
+                  class="text-primary hover:text-primary/80 transition-colors"
+                >
+                  <i class="ri-external-link-line ri-lg"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Certification 3 -->
+          <div class="treasure bg-white rounded-lg shadow-lg overflow-hidden">
+            <div
+              class="h-24 bg-gradient-to-r from-teal-500 to-green-500 flex items-center justify-center"
+            >
+              <i class="ri-cloud-line ri-3x text-white"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                AWS Certified Security - Specialty
+              </h3>
+              <p class="text-gray-600 mb-4">Amazon Web Services</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">February 2024</span>
+                <button
+                  class="text-primary hover:text-primary/80 transition-colors"
+                >
+                  <i class="ri-external-link-line ri-lg"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Achievement 1 -->
+          <div class="treasure bg-white rounded-lg shadow-lg overflow-hidden">
+            <div
+              class="h-24 bg-gradient-to-r from-amber-500 to-orange-500 flex items-center justify-center"
+            >
+              <i class="ri-trophy-line ri-3x text-white"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                1st Place - National Cybersecurity Hackathon
+              </h3>
+              <p class="text-gray-600 mb-4">CyberDefenders Association</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">March 2024</span>
+                <button
+                  class="text-primary hover:text-primary/80 transition-colors"
+                >
+                  <i class="ri-external-link-line ri-lg"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Achievement 2 -->
+          <div class="treasure bg-white rounded-lg shadow-lg overflow-hidden">
+            <div
+              class="h-24 bg-gradient-to-r from-red-500 to-pink-500 flex items-center justify-center"
+            >
+              <i class="ri-code-box-line ri-3x text-white"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                Best Innovation Award - IoT Solutions Expo
+              </h3>
+              <p class="text-gray-600 mb-4">For Home Security IoT System</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">November 2023</span>
+                <button
+                  class="text-primary hover:text-primary/80 transition-colors"
+                >
+                  <i class="ri-external-link-line ri-lg"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Achievement 3 -->
+          <div class="treasure bg-white rounded-lg shadow-lg overflow-hidden">
+            <div
+              class="h-24 bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center"
+            >
+              <i class="ri-article-line ri-3x text-white"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                Research Paper Publication
+              </h3>
+              <p class="text-gray-600 mb-4">
+                International Journal of Computer Vision
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">January 2024</span>
+                <button
+                  class="text-primary hover:text-primary/80 transition-colors"
+                >
+                  <i class="ri-external-link-line ri-lg"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800"
+        >
+          Get In Touch
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div
+            class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg shadow-lg p-8"
+          >
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">
+              Contact Information
+            </h3>
+            <div class="space-y-6">
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary"
+                >
+                  <i class="ri-mail-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-gray-500 mb-1">
+                    Email
+                  </h4>
+                  <a
+                    href="mailto:zoyaaneesa786@gmail.com"
+                    class="text-gray-800 hover:text-primary transition-colors"
+                    >zoyaaneesa786@gmail.com</a
+                  >
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary"
+                >
+                  <i class="ri-linkedin-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-gray-500 mb-1">
+                    LinkedIn
+                  </h4>
+                  <a
+                    href="https://www.linkedin.com/in/aneesa-z-7472442a4"
+                    target="_blank"
+                    class="text-gray-800 hover:text-primary transition-colors"
+                    >linkedin.com/in/aneesa-z-7472442a4</a
+                  >
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary"
+                >
+                  <i class="ri-github-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-gray-500 mb-1">
+                    GitHub
+                  </h4>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="text-gray-800 hover:text-primary transition-colors"
+                    >github.com/aneesazn</a
+                  >
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary"
+                >
+                  <i class="ri-map-pin-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-gray-500 mb-1">
+                    Location
+                  </h4>
+                  <p class="text-gray-800">Bangalore, India</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-10">
+              <h4 class="text-lg font-semibold mb-4 text-gray-800">
+                Connect With Me
+              </h4>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="w-10 h-10 bg-[#1877F2]/10 rounded-full flex items-center justify-center text-[#1877F2] hover:bg-[#1877F2]/20 transition-colors"
+                >
+                  <i class="ri-facebook-fill"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-10 h-10 bg-[#1DA1F2]/10 rounded-full flex items-center justify-center text-[#1DA1F2] hover:bg-[#1DA1F2]/20 transition-colors"
+                >
+                  <i class="ri-twitter-fill"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-10 h-10 bg-[#E4405F]/10 rounded-full flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F]/20 transition-colors"
+                >
+                  <i class="ri-instagram-line"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/aneesa-z-7472442a4"
+                  target="_blank"
+                  class="w-10 h-10 bg-[#0A66C2]/10 rounded-full flex items-center justify-center text-[#0A66C2] hover:bg-[#0A66C2]/20 transition-colors"
+                >
+                  <i class="ri-linkedin-fill"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-lg p-8">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">
+              Send Me a Message
+            </h3>
+            <form>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Your Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Your Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50"
+                    placeholder="john@example.com"
+                  />
+                </div>
+              </div>
+              <div class="mb-6">
+                <label
+                  for="subject"
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50"
+                  placeholder="How can I help you?"
+                />
+              </div>
+              <div class="mb-6">
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  rows="5"
+                  class="w-full px-4 py-2 border border-gray-300 rounded resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50"
+                  placeholder="Your message here..."
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="bg-primary text-white px-6 py-3 rounded-button shadow-lg hover:shadow-xl transition-all ripple whitespace-nowrap"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <a href="#" class="text-2xl font-['Pacifico'] text-white"
+              >Aneesa Z</a
+            >
+            <p class="mt-2 text-gray-400">
+              Computer Science Engineering Student
+            </p>
+          </div>
+          <div class="flex flex-col items-center md:items-end">
+            <div class="flex space-x-4 mb-4">
+              <a
+                href="#"
+                class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+              >
+                <i class="ri-github-fill text-white"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/aneesa-z-7472442a4/"
+                data-readdy="true"
+                class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+              >
+                <i class="ri-linkedin-fill text-white"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+              >
+                <i class="ri-twitter-fill text-white"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+              >
+                <i class="ri-instagram-fill text-white"></i>
+              </a>
+            </div>
+            <p class="text-gray-400 text-sm">
+              © 2025 Aneesa Z Nagarchi. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Back to top button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-6 right-6 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-lg opacity-0 invisible transition-all duration-300"
+    >
+      <i class="ri-arrow-up-line ri-lg"></i>
+    </button>
+    <script>
+      // Mobile menu toggle
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+            // Close mobile menu if open
+            if (!mobileMenu.classList.contains("hidden")) {
+              mobileMenu.classList.add("hidden");
+            }
+          }
+        });
+      });
+      // Back to top button
+      const backToTopButton = document.getElementById("back-to-top");
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove("opacity-0", "invisible");
+          backToTopButton.classList.add("opacity-100", "visible");
+        } else {
+          backToTopButton.classList.remove("opacity-100", "visible");
+          backToTopButton.classList.add("opacity-0", "invisible");
+        }
+      });
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+      // Generate bubbles for underwater effect
+      const bubblesContainer = document.getElementById("bubbles-container");
+      function createBubbles() {
+        for (let i = 0; i < 20; i++) {
+          const bubble = document.createElement("div");
+          bubble.classList.add("bubble");
+          // Random size between 10px and 40px
+          const size = Math.random() * 30 + 10;
+          bubble.style.width = `${size}px`;
+          bubble.style.height = `${size}px`;
+          // Random horizontal position
+          bubble.style.left = `${Math.random() * 100}%`;
+          // Random animation duration between 10s and 20s
+          bubble.style.animationDuration = `${Math.random() * 10 + 10}s`;
+          // Random animation delay
+          bubble.style.animationDelay = `${Math.random() * 5}s`;
+          bubblesContainer.appendChild(bubble);
+        }
+      }
+      createBubbles();
+    </script>
+  </body>
+</html>
